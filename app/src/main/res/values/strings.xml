@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TuDu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_activity">To Do Activities</string>
+    <string-array name="categories">
+        <item>Financial</item>
+        <item>Health</item>
+        <item>Social</item>
+        <item>Fun</item>
+    </string-array>
 </resources>
