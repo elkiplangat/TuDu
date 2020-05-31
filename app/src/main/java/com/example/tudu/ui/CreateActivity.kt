@@ -22,7 +22,7 @@ class CreateActivity : AppCompatActivity() {
     lateinit var title: String
     lateinit var activity: String
     lateinit var category: String
-    var saveDate: String = "DATE NOT"
+    var saveDate: String = "DATE NOT SET"
     private lateinit var viewModel: ToDoActivitiesViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
