@@ -8,8 +8,6 @@ import java.util.*
 data class ToDoActivity(var title:String? = "Default Title", var category:String? = "Financial",
                         var activity:String?, var dateCreated: String? = "NO DATE SPECIFIED") {
    @PrimaryKey(autoGenerate = true)
-
-
    var id:Int? = null
   // constructor() : this()
 }

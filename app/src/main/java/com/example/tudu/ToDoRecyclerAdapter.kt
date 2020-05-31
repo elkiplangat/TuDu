@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tudu.model.ToDoActivity
-import com.example.tudu.viewmodels.ToDoActivitiesViewModel
 import kotlinx.android.synthetic.main.todo_activity_individual.view.*
 
 class ToDoRecyclerAdapter(context: Context?): RecyclerView.Adapter<ToDoRecyclerAdapter.ViewHolder>() {
-    private var activities = emptyList<ToDoActivity>()
+    private  var activities = emptyList<ToDoActivity>()
    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private var view = itemView
         init {
@@ -23,7 +22,8 @@ class ToDoRecyclerAdapter(context: Context?): RecyclerView.Adapter<ToDoRecyclerA
             Log.d("Click Event", "Clicked")
         }
     }
-     fun setData(activities: List<ToDoActivity>){
+    internal fun setData(activities: List<ToDoActivity>){
+
         this.activities = activities
         notifyDataSetChanged()
     }
