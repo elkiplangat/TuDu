@@ -22,13 +22,13 @@ class CreateActivity : AppCompatActivity() {
     lateinit var title: String
     lateinit var activity: String
     lateinit var category: String
-    lateinit var saveDate: String
+    var saveDate: String = "DATE NOT"
     private lateinit var viewModel: ToDoActivitiesViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
 
-        // viewModel = ViewModelProviders.of(this, ToDoActivitiesFragment.viewModelFactory ).get(ToDoActivitiesViewModel::class.java)
+
         tvdatepicker.setOnClickListener {
             constraintLayoutChild.visibility = View.GONE
             material_datepicker.visibility = View.VISIBLE
@@ -66,21 +66,23 @@ class CreateActivity : AppCompatActivity() {
                 category = parent?.getItemAtPosition(position).toString()
             }
         }
+        btncancel.setOnClickListener {
+            finish()
+        }
         btnsave.setOnClickListener {
-            Log.i("String Tag", "Thread is: ${Thread.currentThread().name}")
+
             title = etTitle.text.toString().trim()
             activity = etActivityDesc.text.toString().trim()
 
 
-            if (title.isNullOrEmpty() || activity.isNullOrEmpty()) {
-                // Toast.makeText(applicationContext, "Clicked!", Toast.LENGTH_LONG).show()
+            if (title.isNullOrEmpty() || activity.isNullOrEmpty() ) {
+
                 Snackbar.make(
                     findViewById(R.id.constraintLayoutMain),
                     "Fields Cant be empty",
                     Snackbar.LENGTH_LONG
                 ).show()
             } else {
-                //val activity:ToDoActivity = ToDoActivity(title, category, activity, saveDate )
                 val intent = getIntent()
                 val objectBundle: Bundle = Bundle(4)
                 objectBundle.putString("title", title)
@@ -88,8 +90,7 @@ class CreateActivity : AppCompatActivity() {
                 objectBundle.putString("activity", activity)
                 objectBundle.putString("saveDate", saveDate)
                 intent.putExtra("activity_object", objectBundle)
-                Log.d("ToDoActivityInputInBdle", objectBundle.getString("title"))
-                Log.d("ToDoActivityInputInvble", title)
+
                 setResult(Activity.RESULT_OK, intent)
 
                 finish()
