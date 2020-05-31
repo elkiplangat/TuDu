@@ -7,33 +7,31 @@ import androidx.room.RoomDatabase
 
 import com.example.tudu.model.ToDoActivity
 import com.example.tudu.data.ToDoActivitiesDao
+import kotlinx.coroutines.CoroutineScope
+
 
 @Database(
     entities = [ToDoActivity::class],
     version = 1, exportSchema = false
 )
-abstract class ToDoActivitiesDatabase: RoomDatabase() {
-    abstract fun getToDoActivitiesDao(): ToDoActivitiesDao
+abstract class ToDoActivitiesDatabase:RoomDatabase(){
+    abstract fun activitiesDao():ToDoActivitiesDao
 
     companion object{
         @Volatile
-        private var instance: ToDoActivitiesDatabase? = null
+        var INSTANCE:ToDoActivitiesDatabase? = null
 
-        private var LOCK = Any()
-
-        operator fun invoke(context: Context): Any = instance
-            ?: synchronized(LOCK){
-            instance
-                ?: createDatabase(
-                    context
-                )
-                    .also { instance = it }
+        fun getInstance(context: Context, scope: CoroutineScope):ToDoActivitiesDatabase{
+            val tempInstance = INSTANCE
+            if (tempInstance!=null){
+                return tempInstance
+            }
+            synchronized(this){
+                val instance = Room.databaseBuilder(context, ToDoActivitiesDatabase::class.java, "todo_database").build()
+                INSTANCE = instance
+                return instance
+            }
         }
-
-        private fun createDatabase(context: Context)=
-            Room.databaseBuilder(context.applicationContext, ToDoActivitiesDatabase::class.java, "TodoActivitiesDb.db")
-                .build()
-
 
     }
 }
