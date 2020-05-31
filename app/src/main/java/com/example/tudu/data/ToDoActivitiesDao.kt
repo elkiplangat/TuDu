@@ -8,13 +8,14 @@ import com.example.tudu.model.ToDoActivity
 @Dao
 interface ToDoActivitiesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(activity: ToDoActivity){
+    suspend fun insert(activity: ToDoActivity)
 
-    }
+
     @Delete
-    suspend fun delete(activity: ToDoActivity){}
+    suspend fun delete(activity: ToDoActivity) {
+    }
 
     @Query("SELECT * FROM to_do_activities")
-    fun getAllActivities():LiveData<List<ToDoActivity>>
+    fun getAllActivities(): LiveData<List<ToDoActivity>>
 
 }
