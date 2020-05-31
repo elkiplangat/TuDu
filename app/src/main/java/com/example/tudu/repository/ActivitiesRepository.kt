@@ -6,19 +6,18 @@ import com.example.tudu.data.ToDoActivitiesDao
 import com.example.tudu.data.ToDoActivitiesDatabase
 import com.example.tudu.model.ToDoActivity
 
-class ActivitiesRepository(private val db: ToDoActivitiesDatabase) {
-   //var allActivities:LiveData<List<ToDoActivity>> = dao.getAllActivities()
+class ActivitiesRepository(val dao:ToDoActivitiesDao) {
+   var allActivities:LiveData<List<ToDoActivity>> = dao.getAllActivities()
 
     suspend fun insert(activity: ToDoActivity){
-        db.getToDoActivitiesDao().insert(activity)
-
+        dao.insert(activity)
 
     }
     suspend fun delete(activity: ToDoActivity){
-        db.getToDoActivitiesDao().delete(activity)
+        dao.delete(activity)
 
     }
-    fun getAllToDoActivities()=db.getToDoActivitiesDao().getAllActivities()
+
 
 
 }
