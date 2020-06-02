@@ -44,3 +44,7 @@ class ToDoRecyclerAdapter(context: Context?): RecyclerView.Adapter<ToDoRecyclerA
     }
 
 }
+class ItemListener(val clickListener:(itemId:Int?)->Unit){
+    fun onClick(activity: ToDoActivity)= clickListener(activity.id)
+
+}
