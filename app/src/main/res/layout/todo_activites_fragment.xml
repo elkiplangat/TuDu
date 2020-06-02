@@ -7,10 +7,11 @@
     tools:context="com.example.tudu.ui.ToDoActivitiesFragment">
    <com.google.android.material.appbar.AppBarLayout
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="30dp">
       <com.google.android.material.appbar.MaterialToolbar
           android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
+          android:layout_height="38dp"
          android:background="?attr/colorPrimary"
          app:layout_scrollFlags="scroll"
           app:title="@string/app_name"
@@ -27,6 +28,7 @@
        android:layout_height="match_parent"
        android:id="@+id/rvActivities"
        android:scrollbars="vertical"
+       android:layout_marginTop="30dp"
        />
 
    <com.google.android.material.floatingactionbutton.FloatingActionButton
