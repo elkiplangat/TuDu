@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tudu.R
 import com.example.tudu.viewmodels.ToDoActivitiesViewModel
@@ -46,9 +47,10 @@ class ToDoActivitiesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val manager = GridLayoutManager(context, 2)
         val adapter = ToDoRecyclerAdapter(this.context)
         rvActivities.adapter = adapter
-        rvActivities.layoutManager = LinearLayoutManager(this.context)
+        rvActivities.layoutManager = manager
         viewModel = ViewModelProvider(this).get(ToDoActivitiesViewModel::class.java)
         viewModel.allActivities.observe(viewLifecycleOwner, Observer { activities ->
             activities?.let { adapter.setData(it) }
