@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:fontFamily="@font/roboto_black"
+            android:textColor="@color/colorAccent"
             android:text="Placeholder Date" />
 
         <TextView
